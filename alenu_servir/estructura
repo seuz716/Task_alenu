@@ -1,0 +1,23 @@
+alenu_servir
+	-fundacion_alenu
+		-init.py
+		-asgi.py
+		-settings.py
+		-urls.py
+		-wsgi.py
+	-task
+		-migrations
+		-templates
+			-signup.html
+		-_init_.py
+		-admin.py
+		-apps.py
+		-models.py
+		-test.py
+		views.py	
+	-venv
+	db.sqlite3
+	-manage.py
+
+
+

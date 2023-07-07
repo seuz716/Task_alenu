@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container h-100">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h2 class="text-center mb-0">Iniciar sesión</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 text-center align-self-center">
+              <img src="https://images.unsplash.com/photo-1476234251651-f353703a034d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGVzJTIwZW5mYW50c3xlbnwwfDF8MHx8fDI%3D&auto=format&fit=crop&w=400&q=60" alt="Imagen bonita" class="rounded-circle img-fluid">
+            </div>
+            <div class="col-md-6">
+              <form method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                  <strong>¡Ups!</strong> Por favor, corrige los siguientes errores:<br>
+                  {% for field, errors in form.errors.items %}
+                  <ul class="mb-0">
+                    {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endfor %}
+                </div>
+                {% endif %}
+                <div class="form-group">
+                  {{ form.username.label_tag }}
+                  {{ form.username }}
+                </div>
+                <div class="form-group">
+                  {{ form.password.label_tag }}
+                  {{ form.password }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-light">
+          <p class="text-center mb-0">¿No tienes una cuenta? <a href="{% url 'signup' %}">Regístrate aquí</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
