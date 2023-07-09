@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container-fluid bg-image py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 bg-white p-4 rounded shadow" style="background-image: url('https://images.unsplash.com/photo-1524503033411-c9566986fc8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxlcyUyMGVuZmFudHN8ZW58MHx8MHx8fDI%3D&auto=format&fit=crop&w=400&q=60'); background-size: cover; background-position: center;">
+        <h1 class="mb-4 text-center">New Task</h1>
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{ form.titulo.id_for_label }}">Title</label>
+            {{ form.titulo }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.descripcion.id_for_label }}">Description</label>
+            {{ form.descripcion }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.completada.id_for_label }}">Completed</label>
+            {{ form.completada }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.url_imagen.id_for_label }}">Image URL</label>
+            {{ form.url_imagen }}
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .form-group input[type="submit"] {
+      width: auto;
+      margin-top: 10px;
+    }
+  </style>
+{% endblock %}

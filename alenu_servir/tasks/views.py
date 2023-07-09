@@ -1,17 +1,55 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.shortcuts import render, redirect
 from django.contrib.auth.views import LogoutView
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
+from django.urls import reverse
+from .models import Task
+from .forms import TaskForm
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    template_name = 'task/task_confirm_delete.html'
+    success_url = reverse_lazy('task_list')
+
+def task_list(request):
+    tasks = Task.objects.all()
+    return render(request, 'task/task_list.html', {'tasks': tasks})
+
+def task_detail(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'task/task_detail.html', {'task': task})
+
+def task_create(request):
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save()
+            return redirect(reverse('tasks:task_detail', kwargs={'pk': task.pk}))
+    else:
+        form = TaskForm()
+    return render(request, 'task/task_form.html', {'form': form})
+
+def task_update(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            task = form.save()
+            return redirect(reverse('tasks:task_detail', kwargs={'pk': task.pk}))
+    else:
+        form = TaskForm(instance=task)
+    return render(request, 'task/task_form.html', {'form': form})
+
+
+def task_delete(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect(reverse('tasks:task_list'))
+    return render(request, 'task/task_confirm_delete.html', {'task': task})
 
 def user_login(request):
     if request.method == 'POST':
@@ -37,10 +75,9 @@ def user_login(request):
 class CustomLogoutView(LogoutView):
     next_page = 'home'
 
-def logout(request):
+def user_logout(request):
     messages.info(request, 'Has cerrado sesión exitosamente.')
     return CustomLogoutView.as_view()(request)
-
 
 def signup(request):
     try:

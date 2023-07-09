@@ -5,10 +5,25 @@ alenu_servir
 		-settings.py
 		-urls.py
 		-wsgi.py
-	-task
+	-tasks
 		-migrations
+		-urls.py
+		forms.py
+		-static
+			-css
+				-estilos.css
 		-templates
 			-signup.html
+			-error.html
+			-home.html
+			-login.html
+			-logout.html
+			-base.html
+			-task.html
+			-task
+				-task_detail.html
+				-task_form.html
+				-task_list.html
 		-_init_.py
 		-admin.py
 		-apps.py
