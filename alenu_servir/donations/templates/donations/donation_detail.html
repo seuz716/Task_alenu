@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header">
+          <h1 class="card-title text-center">Detalles de la Donación</h1>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="card-text"><strong>Entidad:</strong> {{ donation.entidad }}</p>
+              <p class="card-text"><strong>Tipo de Régimen:</strong> {{ donation.tipo_regimen }}</p>
+              <p class="card-text"><strong>Identificación:</strong> {{ donation.identificacion }}</p>
+              <p class="card-text"><strong>Tipo de Identificación:</strong> {{ donation.tipo_identificacion }}</p>
+              <p class="card-text"><strong>Ciudad:</strong> {{ donation.ciudad }}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text"><strong>Monto:</strong> {{ donation.monto }}</p>
+              <p class="card-text"><strong>Propósito:</strong> {{ donation.proposito }}</p>
+              <p class="card-text"><strong>Fuente:</strong> {{ donation.fuente }}</p>
+              <p class="card-text"><strong>Confirmado:</strong> {% if donation.confirmado %}Sí{% else %}No{% endif %}</p>
+              <p class="card-text"><strong>Fecha de Creación:</strong> {{ donation.fecha_creacion }}</p>
+            </div>
+          </div>
+          {% if donation.url_imagen %}
+            <div class="mt-4 text-center">
+              <img src="{{ donation.url_imagen }}" class="img-fluid rounded" alt="Imagen de la donación">
+            </div>
+          {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+          <div class="card-footer text-center">
+            <a href="{% url 'donations:donation_update' pk=donation.pk %}" class="btn btn-primary">Editar</a>
+            <form action="{% url 'donations:donation_delete' pk=donation.pk %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="submit" value="Eliminar" class="btn btn-danger">
+            </form>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+

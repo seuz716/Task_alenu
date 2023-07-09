@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Listado de Donaciones</h1>
+  <div class="row">
+    {% for donation in donations %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ donation.url_imagen }}" class="card-img-top" alt="Imagen de la donación">
+          <div class="card-body">
+            <h5 class="card-title">{{ donation.entidad }}</h5>
+            <p class="card-text">Propósito: {{ donation.proposito }}</p>
+            <p class="card-text">Monto: {{ donation.monto }}</p>
+            <a href="{% url 'donations:donation_detail' donation.pk %}" class="btn btn-primary">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col">
+        <p>No hay donaciones registradas.</p>
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% if user.is_authenticated %}
+    <a href="{% url 'donations:donation_create' %}" class="btn btn-primary">Crear Donación</a>
+  {% endif %}
+{% endblock %}

@@ -24,6 +24,18 @@ alenu_servir
 				-task_detail.html
 				-task_form.html
 				-task_list.html
+	-donations
+		-migrations
+		-urls.py
+		forms.py
+		-static
+			-css
+				-estilos.css
+		-templates
+			-donations
+				-donation_detail.html
+				-donation_form.html
+				-donation_list.html			
 		-_init_.py
 		-admin.py
 		-apps.py
@@ -31,6 +43,13 @@ alenu_servir
 		-test.py
 		views.py	
 	-venv
+	-static
+		admin
+			-css
+			-img
+			-js
+		css
+			-estilos.css	
 	db.sqlite3
 	-manage.py
 

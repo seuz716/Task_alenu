@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Confirmar Eliminación de Donación</h1>
+  <p>¿Estás seguro de que deseas eliminar la donación "{{ donation }}"?</p>
+  <form action="{% url 'donations:donation_delete' pk=donation.pk %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Eliminar" class="btn btn-danger">
+  </form>
+{% endblock %}

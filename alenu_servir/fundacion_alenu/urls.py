@@ -5,6 +5,7 @@ from tasks.views import signup, user_login, user_logout, home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/', include('tasks.urls')),
+    path('donations/', include('donations.urls')),
     path('signup/', signup, name='signup'),
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
