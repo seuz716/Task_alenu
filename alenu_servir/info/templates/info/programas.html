@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="container my-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">Nuestros Programas</h1>
+    <p class="text-muted fs-5">Apoyamos a la población vulnerable con amor, compromiso y fe.</p>
+  </div>
+
+  <!-- Servicios -->
+ <h1>Actividades</h1>
+  <div class="row">
+    {% for task in tasks %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ task.url_imagen }}" class="card-img-top object-fit-cover" style="height: 200px;" alt="Task Image">
+
+          <div class="card-body">
+            <h5 class="card-title">{{ task.titulo }}</h5>
+            <p class="card-text">{{ task.descripcion|truncatechars:100 }}</p>
+            <a href="{% url 'tasks:task_detail' pk=task.pk %}" class="btn btn-primary">Details</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>No tasks yet.</p>
+    {% endfor %}
+  </div>
+  {% if user.is_authenticated %}
+    <a href="{% url 'tasks:task_create' %}" class="btn btn-success">New Task</a>
+  {% endif %}
+
+  <!-- Quiénes Somos -->
+  <div class="mb-5">
+    <h2 class="text-secondary">¿Quiénes Somos?</h2>
+    <p class="fs-5 text-justify">
+      Fundación ALENU es una entidad sin ánimo de lucro, enfocada en el apoyo integral a la población vulnerable de Pasto. Trabajamos por la transformación de vidas a través de programas sociales enfocados en niños, niñas y adolescentes en contextos difíciles.
+    </p>
+  </div>
+
+  <!-- Misión, Visión, Objeto Social -->
+  <div class="row mb-5">
+    <div class="col-md-4">
+      <h4 class="text-primary">Misión</h4>
+      <p class="fs-6">Contribuir al desarrollo integral de poblaciones vulnerables, especialmente la niñez, a través de acciones sociales comprometidas con la dignidad y la calidad de vida.</p>
+    </div>
+    <div class="col-md-4">
+      <h4 class="text-primary">Visión</h4>
+      <p class="fs-6">Ser reconocidos a nivel nacional como una organización que transforma vidas a través del servicio y la formación en valores.</p>
+    </div>
+    <div class="col-md-4">
+      <h4 class="text-primary">Objeto Social</h4>
+      <p class="fs-6">Mejorar las condiciones de vida de comunidades vulnerables promoviendo la inclusión, la equidad y el desarrollo sostenible.</p>
+    </div>
+  </div>
+
+ 
+
+  <!-- Principios y Valores -->
+  <div class="mb-5">
+    <h2 class="text-secondary mb-4">Principios y Valores</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">💠 <strong>Calidad:</strong> Superar las expectativas de la comunidad con servicios de excelencia.</li>
+      <li class="list-group-item">💠 <strong>Trabajo en equipo:</strong> Promover armonía, compromiso y cooperación.</li>
+      <li class="list-group-item">💠 <strong>Responsabilidad:</strong> Actuar con compromiso y resultados concretos.</li>
+      <li class="list-group-item">💠 <strong>Integridad:</strong> Honestidad, respeto y solidaridad como base.</li>
+      <li class="list-group-item">💠 <strong>Ética:</strong> Transparencia y principios en cada acción.</li>
+      <li class="list-group-item">💠 <strong>Respeto y Afecto:</strong> Relaciones fraternas que dignifican la vida.</li>
+    </ul>
+  </div>
+
+
+    <!-- Cómo apoyar -->
+  <div class="mb-5 bg-light p-4 rounded shadow-sm">
+    <h2 class="text-secondary" style="color: red;>¿Cómo puedes apoyar?</h2>
+    <p class="fs-5">Recibimos donaciones en especie o dinero. Puedes aportar víveres, ropa, útiles, o transferencias a:</p>
+    <ul>
+      <li>Cuenta de Ahorros Bancolombia No. <strong>074-585172-01</strong></li>
+      <li>Víveres, ropa, juguetes, útiles escolares, mobiliario, electrodomésticos.</li>
+      <li>Compra de bonos solidarios desde $5.000</li>
+    </ul>
+    <p>¡Gracias por ser parte de esta obra que transforma vidas!</p>
+  </div>
+
+  <!-- Imagen final -->
+  <div class="text-center mt-5">
+    <img src="{% static 'img/imagen10.jpg' %}" class="img-fluid rounded shadow" alt="Ayuda Fundación ALENU">
+  </div>
+
+  <!-- Contacto -->
+  <div class="mt-5">
+    <h3 class="text-primary">Contacto</h3>
+    <p class="mb-1"><i class="fas fa-map-marker-alt"></i> Carrera 27 No. 22-46, Barrio La Independencia – Pasto</p>
+    <p class="mb-1"><i class="fas fa-phone-alt"></i> Tel: 3174672954 - 3176925434</p>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:alenufundacion@gmail.com">alenufundacion@gmail.com</a></p>
+  </div>
+</section>
+{% endblock %}

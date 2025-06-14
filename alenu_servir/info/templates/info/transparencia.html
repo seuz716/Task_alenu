@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center mb-5">Transparencia y Rendición de Cuentas</h1>
+
+  <!-- Sección de Principios -->
+  <section class="mb-5">
+    <h2>Principios Institucionales</h2>
+    <li>
+      La Fundación ALENU se rige por los principios de legalidad, transparencia, eficiencia, participación,
+      responsabilidad y rendición de cuentas, comprometiéndose a manejar adecuadamente los recursos donados y ejecutados
+      en los diferentes programas sociales dirigidos a niños, niñas, adolescentes y familias en condición de vulnerabilidad.
+    </li>
+  </section>
+
+  <!-- Marco Legal -->
+  <section class="mb-5">
+    <h2>Marco Legal</h2>
+    <ul>
+      <li>Constitución Política de Colombia</li>
+      <li>Decreto 2150 de 1995 (simplificación de trámites en entidades sin ánimo de lucro)</li>
+      <li>Normas NIIF para PYMES y ESAL (Entidades Sin Ánimo de Lucro)</li>
+      <li>Ley 1098 de 2006 – Código de Infancia y Adolescencia</li>
+      <li>Régimen tributario especial - Art. 19 y 356 del Estatuto Tributario</li>
+    </ul>
+  </section>
+
+  <!-- Información Administrativa -->
+  <section class="mb-5">
+    <h2>Información Institucional</h2>
+    <p><strong>Razón Social:</strong> Fundación ALENU</p>
+    <p><strong>NIT:</strong> 901234567-8</p>
+    <p><strong>Dirección:</strong> Carrera 27 No. 22-46 Barrio La Independencia – Pasto, Nariño</p>
+    <p><strong>Teléfonos:</strong> 3174672954 - 3176925434</p>
+    <p><strong>Correo Electrónico:</strong> alenufundacion@gmail.com</p>
+    <p><strong>Representante Legal:</strong> Nombre del representante (según Cámara de Comercio)</p>
+  </section>
+
+  <!-- Estados Financieros -->
+  <section class="mb-5">
+    <h2>Estados Financieros</h2>
+    <p>La Fundación ALENU presenta anualmente sus estados financieros auditados por contador público titulado. Estos incluyen:</p>
+    <ul>
+      <li>Estado de Situación Financiera (Balance General)</li>
+      <li>Estado de Resultados</li>
+      <li>Estado de Flujos de Efectivo</li>
+      <li>Notas a los Estados Financieros</li>
+      <li>Informe del Revisor Fiscal (si aplica)</li>
+    </ul>
+    <a href="{% static 'pdf/estado_financiero_2024.pdf' %}" target="_blank" class="btn btn-outline-primary mt-2">Ver Estados Financieros 2024</a>
+  </section>
+
+  <!-- Presupuesto y Ejecución -->
+  <section class="mb-5">
+    <h2>Presupuesto Anual y Ejecución</h2>
+    <p>
+      A continuación puede consultar el presupuesto aprobado para el año en curso y su ejecución trimestral:
+    </p>
+    <a href="{% static 'pdf/presupuesto_2024.pdf' %}" target="_blank" class="btn btn-outline-success mt-2">Ver Presupuesto 2024</a>
+    <a href="{% static 'pdf/ejecucion_trimestral.pdf' %}" target="_blank" class="btn btn-outline-secondary mt-2">Ver Ejecución Trimestral</a>
+  </section>
+
+  <!-- Donaciones y Financiación -->
+  <section class="mb-5">
+    <h2>Fuentes de Financiación</h2>
+    <p>
+      La Fundación ALENU se financia mediante donaciones de personas naturales y jurídicas, voluntariado, proyectos gestionados
+      con entidades públicas y privadas, y recursos autogestionados.
+    </p>
+    <ul>
+      <li>Donaciones en especie (víveres, ropa, útiles escolares, etc.)</li>
+      <li>Bonos de apoyo entre $5.000 y $100.000</li>
+      <li>Donaciones monetarias a cuenta Bancolombia Ahorros No. 074-585172-01</li>
+      <li>Apoyos institucionales (Universidades, Club Rotaract, Policía, Cruz Roja, etc.)</li>
+    </ul>
+  </section>
+
+  <!-- Proyectos Sociales -->
+  <section class="mb-5">
+    <h2>Proyectos en Ejecución</h2>
+    <ul>
+      <li>Programa de Alimentación Infantil – Refuerzo nutricional diario</li>
+      <li>Acompañamiento psicosocial y familiar</li>
+      <li>Escuela de Valores, Fe y Padres</li>
+      <li>Actividades recreativas y celebraciones especiales</li>
+      <li>Apoyo pedagógico y académico</li>
+    </ul>
+  </section>
+
+  <!-- Contratación y Personal -->
+  <section class="mb-5">
+    <h2>Talento Humano y Voluntariado</h2>
+    <p>
+      La Fundación no cuenta con empleados contratados de planta. Todas las actividades se realizan gracias al voluntariado,
+      estudiantes en práctica y apoyo comunitario. Se reconoce una bonificación mínima a la persona encargada de la cocina,
+      la cual se cubre con aportes voluntarios.
+    </p>
+  </section>
+
+  <!-- Evaluación y Seguimiento -->
+  <section class="mb-5">
+    <h2>Evaluación y Control</h2>
+    <ul>
+      <li>Revisión periódica de ejecución financiera por contador público</li>
+      <li>Informe de actividades y beneficiarios por programa</li>
+      <li>Informe anual para la Asamblea General (si aplica)</li>
+      <li>Informes a entes de control: DIAN, Alcaldía, ICBF, según exigencias</li>
+    </ul>
+  </section>
+
+  <!-- Galería o evidencia visual -->
+<!-- Galería o evidencia visual -->
+<section class="mb-5">
+  <h2 class="mb-4">Evidencia de Actividades</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/11.jpg' %}" class="card-img-top img-evidencia" alt="Actividad 1">
+        <div class="card-body">
+          <h5 class="card-title text-center">Actividad 1</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/32.jpg' %}" class="card-img-top img-evidencia" alt="Actividad 2">
+        <div class="card-body">
+          <h5 class="card-title text-center">Actividad 2</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/34.jpg' %}" class="card-img-top img-evidencia" alt="Actividad 3">
+        <div class="card-body">
+          <h5 class="card-title text-center">Actividad 3</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</div>
+{% endblock %}

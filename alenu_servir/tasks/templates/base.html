@@ -1,56 +1,148 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}Fundación Alenu{% endblock %}</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"
+  
+  <!-- Estilos personalizados -->
   <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
   <link rel="stylesheet" href="{% static 'donations/css/estilos.css' %}">
+
+  <!-- Iconos -->
   <script src="https://kit.fontawesome.com/0aa1a35bdd.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'home' %}">Fundación Alenu</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<body class="bg-info bg-opacity-10 text-dark">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+      <img src="{% static 'img/0.jpg' %}" alt="Logo" width="60" height="60" class="me-2 rounded-circle">
+      <span class="fw-bold">Fundación Alenu</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
-        </li>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'nuestra_mision' %}">Nuestra Misión</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'programas' %}">Programas</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'participa' %}">Participa</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'transparencia' %}">Transparencia</a></li>
+
         {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'tasks:task_list' %}">Tareas</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'donations:donation_list' %}">Donaciones</a></li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="{% url 'tasks:task_list' %}">Tasks</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'donations:donation_list' %}">Donaciones</a>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link nav-link" style="padding: 0; border: none; background: none;">
+                Salir
+              </button>
+            </form>
           </li>
         {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Log In</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Registro</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Ingresar</a></li>
         {% endif %}
       </ul>
     </div>
-  </nav>
-  <div class="container">
+  </div>
+</nav>
+
+
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container py-4">
     {% block content %}
     {% endblock %}
+  </main>
+
+ <footer class="bg-dark text-light py-5 mt-auto">
+  <div class="container">
+    <div class="row">
+      <!-- Fundación -->
+      <div class="col-lg-4 mb-4">
+        <h3 class="mb-3">Fundación Alenu</h3>
+        <p class="text-light-50">
+          Trabajando por un mejor futuro para los niños en situación de vulnerabilidad desde 2016.
+        </p>
+        <div class="d-flex gap-3 mt-4">
+          <a href="#" class="text-light fs-4"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-light fs-4"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-light fs-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-light fs-4"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Enlaces -->
+      <!-- Enlaces -->
+<div class="col-lg-4 mb-4">
+  <h3 class="mb-3">Enlaces Rápidos</h3>
+  <ul class="list-unstyled">
+    <li class="mb-2">
+      <a href="{% url 'nuestra_mision' %}" class="text-light text-decoration-none">
+        <i class="fas fa-chevron-right me-2"></i>Nuestra misión
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url 'programas' %}" class="text-light text-decoration-none">
+        <i class="fas fa-chevron-right me-2"></i>Programas
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href= "{% url 'participa' %}" class="text-light text-decoration-none">
+        <i class="fas fa-chevron-right me-2"></i>Participa
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url 'contacto' %}"  class="text-light text-decoration-none">
+        <i class="fas fa-chevron-right me-2"></i>Contacto
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url 'transparencia' %}" class="text-light text-decoration-none">
+        <i class="fas fa-chevron-right me-2"></i>Transparencia
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      <!-- Contacto -->
+      <div class="col-lg-4">
+        <h3 class="mb-3">Contacto</h3>
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="fas fa-envelope me-2"></i>alenufundacion@gmail.com</li>
+          <li class="mb-2"><i class="fas fa-phone me-2"></i>3174672954 - 3176925434</li>
+          <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Pasto, Colombia</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="my-4 bg-secondary">
+
+    <p class="mb-0 text-center small text-light">
+      &copy; {{ year|default:2025 }} Fundación Alenu. Todos los derechos reservados.
+    </p>
   </div>
-<footer class="bg-light py-3">
-  <!-- Código del pie de página -->
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

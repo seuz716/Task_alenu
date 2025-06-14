@@ -1,65 +1,216 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid" style="background-image: url('https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'); background-size: cover;">
-  <div class="container">
-    <h1 class="display-4 text-white text-center">Bienvenido a la Fundación Alenu</h1>
-    <p class="lead text-white text-center">Somos una organización sin fines de lucro dedicada a brindar cuidado y apoyo a niños en situación de vulnerabilidad.</p>
-  </div>
-</div>
+<!-- Botón flotante de donación -->
+  <a href="#participa" class="floating-btn btn btn-danger">
+    <i class="fas fa-donate fa-2x"></i>
+  </a>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card h-100">
-        <img src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGVzJTIwZW5mYW50c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60" class="card-img-top h-80" alt="Imagen 1">
-        <div class="card-body">
-          <h2 class="card-title text-center">Nuestra Misión</h2>
-          <p class="card-text text-justify">Creemos que cada niño merece un hogar seguro y amoroso, acceso a educación y atención médica, y la oportunidad de alcanzar su máximo potencial. Nuestra misión es brindar estos servicios esenciales a los niños que más lo necesitan.</p>
-        </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="hero-title animate-fade-in">Bienvenido a la Fundación Alenu</h1>
+      <p class="hero-subtitle animate-fade-in animate-delay-1">Somos una organización sin fines de lucro dedicada a brindar cuidado y apoyo a niños en situación de vulnerabilidad.</p>
+      <div class="d-flex justify-content-center gap-3 animate-fade-in animate-delay-2">
+        <a href="{% url 'participa' %}" class="btn btn-primary btn-lg">
+          <i class="fas fa-hands-helping me-2"></i>Participa
+        </a>
+        <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-dark">
+          <i class="fas fa-envelope me-2"></i>Contacto
+        </a>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card h-100">
-        <img src="https://images.unsplash.com/photo-1614113072653-5b6f26e1bbc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGxlcyUyMGVuZmFudHN8ZW58MHwxfDB8fHwy&auto=format&fit=crop&w=400&q=60" class="card-img-top h-80" alt="Imagen 2">
-        <div class="card-body">
-          <h2 class="card-title text-center">Nuestros Programas</h2>
-          <p class="card-text text-justify">Ofrecemos una variedad de programas para apoyar a los niños y las familias, que incluyen cuidado de crianza, adopción, servicios de educación y atención médica, y programas comunitarios. Nuestros programas están diseñados para satisfacer las necesidades únicas de cada niño y familia a quienes servimos.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card h-100">
-        <img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" class="card-img-top h-80" alt="Imagen 3">
-        <div class="card-body">
-          <h2 class="card-title text-center">Participa</h2>
-          <p class="card-text text-justify">Dependemos del apoyo de nuestra comunidad para continuar brindando servicios esenciales a los niños en situación de vulnerabilidad. Hay muchas formas de participar, como ser voluntario, hacer donaciones y difundir nuestra misión. Juntos, podemos marcar la diferencia en la vida de los niños.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card h-100">
-        <img src="https://images.unsplash.com/photo-1537440499989-de5f6b6854de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGxlcyUyMGVuZmFudHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=400&q=60" class="card-img-top h-80" alt="Imagen 4">
-        <div class="card-body">
-          <h2 class="card-title text-center">Contacto</h2>
-          <p class="card-text text-justify">Si tienes alguna pregunta o deseas obtener más información sobre nuestra organización, no dudes en contactarnos. ¡Nos encantaría saber de ti!</p>
-          <p class="text-center"><a href="mailto:info@example.com" class="btn btn-primary">Contáctanos</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <div class="row">
-    <div class="col-md-12">
+  <!-- Cards Section -->
+  <div class="container py-5">
+    <h2 class="section-title appear">Nuestro Trabajo</h2>
+    
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100 reveal">
+          <div class="overflow-hidden" style="height: 250px;">
+            <img src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGVzJTIwZW5mYW50c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60" class="card-img-top w-100 h-100" alt="Imagen 1">
+          </div>
+          <div class="card-body p-4">
+            <h2 class="card-title text-center">Nuestra Misión</h2>
+            <p class="card-text">Creemos que cada niño merece un hogar seguro y amoroso, acceso a educación y atención médica, y la oportunidad de alcanzar su máximo potencial. Nuestra misión es brindar estos servicios esenciales a los niños que más lo necesitan.</p>
+            <div class="text-center mt-4">
+              <a href="#" class="btn btn-outline-light">
+                <i class="fas fa-book-open me-2"></i>Saber más
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100 reveal">
+          <div class="overflow-hidden" style="height: 250px;">
+            <img src="https://images.unsplash.com/photo-1614113072653-5b6f26e1bbc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGxlcyUyMGVuZmFudHN8ZW58MHx8MHx8fHwy&auto=format&fit=crop&w=400&q=60" class="card-img-top w-100 h-100" alt="Imagen 2">
+          </div>
+          <div class="card-body p-4">
+            <h2 class="card-title text-center">Nuestros Programas</h2>
+            <p class="card-text">Ofrecemos una variedad de programas para apoyar a los niños y las familias, que incluyen cuidado de crianza, adopción, servicios de educación y atención médica, y programas comunitarios. Nuestros programas están diseñados para satisfacer las necesidades únicas de cada niño y familia a quienes servimos.</p>
+            <div class="text-center mt-4">
+              <a href="#" class="btn btn-outline-light">
+                <i class="fas fa-list-alt me-2"></i>Ver programas
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100 reveal" id="participa">
+          <div class="overflow-hidden" style="height: 250px;">
+            <img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" class="card-img-top w-100 h-100" alt="Imagen 3">
+          </div>
+          <div class="card-body p-4">
+            <h2 class="card-title text-center">Participa</h2>
+            <p class="card-text">Dependemos del apoyo de nuestra comunidad para continuar brindando servicios esenciales a los niños en situación de vulnerabilidad. Hay muchas formas de participar, como ser voluntario, hacer donaciones y difundir nuestra misión. Juntos, podemos marcar la diferencia en la vida de los niños.</p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+              <a href="{% url 'participa' %}"  class="btn btn-primary">
+                <i class="fas fa-user-plus me-2"></i>Voluntariado
+              </a>
+              <a href="#" class="btn btn-success">
+                <i class="fas fa-donate me-2"></i>Donar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100 reveal" id="contacto">
+          <div class="overflow-hidden" style="height: 250px;">
+            <img src="https://images.unsplash.com/photo-1537440499989-de5f6b6854de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGxlcyUyMGVuZmFntHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=400&q=60" class="card-img-top w-100 h-100" alt="Imagen 4">
+          </div>
+          <div class="card-body p-4">
+            <h2 class="card-title text-center">Contacto</h2>
+            <p class="card-text">Si tienes alguna pregunta o deseas obtener más información sobre nuestra organización, no dudes en contactarnos. ¡Nos encantaría saber de ti!</p>
+            <div class="mt-4 text-center">
+              <a href="mailto:info@example.com" class="btn btn-primary btn-lg">
+                <i class="fas fa-envelope me-2"></i>Contáctanos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información adicional -->
+    <div class="info-section reveal">
+      <h2 class="text-center mb-4">Sobre la Fundación ALENU</h2>
       <p>La Fundación ALENU, NIT 900.954.755-0, es una entidad sin ánimo de lucro, de carácter privado y con representación legal. Nuestra organización se dedica a apoyar a la población vulnerable, centrándonos en el individuo, la familia y la sociedad.</p>
       <p>Desde nuestro establecimiento en 2016, nos hemos enfocado en brindar apoyo en áreas como educación, alimentación y orientación psicosocial a los niños, niñas y adolescentes en situación de violencia intrafamiliar, consumo de SPA, víctimas del conflicto armado, desplazamiento y migrantes. Nuestro objetivo es promover el crecimiento humano integral en el entorno familiar y social, buscando mejorar las condiciones de vida de las comunidades más necesitadas.</p>
+      <p>El nombre de nuestra fundación, ALENU, proviene de la palabra hebrea que significa "El Deber de Servir". Este nombre refleja nuestro compromiso con la gestión social y nuestra obligación de poner nuestros conocimientos y habilidades al servicio de aquellos que más lo necesitan.</p>
+      <p class="mb-0">Si deseas obtener más información o tienes alguna pregunta, no dudes en contactarnos. Estaremos encantados de atenderte. Puedes comunicarte con nosotros a través de nuestro correo electrónico alenufundacion@gmail.com o por teléfono al 3174672954 - 3176925434.</p>
+    </div>
 
-      <p>El nombre de nuestra fundación, ALENU, proviene de la palabra hebrea que significa "El Deber de Servir". Este nombre refleja nuestro compromiso con la gestión social y nuestra obligación de poner nuestros conocimientos y habilidades al servicio de aquellosAquí tienes el código actualizado para que todas las tarjetas tengan el mismo tamaño:
-
-      <p>Si deseas obtener más información o tienes alguna pregunta, no dudes en contactarnos. Estaremos encantados de atenderte. Puedes comunicarte con nosotros a través de nuestro correo electrónico alenufundacion@gmail.com o por teléfono al 3174672954 - 3176925434.</p>
+    <!-- Testimonios -->
+    <h2 class="section-title appear">Lo Que Dicen Sobre Nosotros</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4 reveal">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="text-center mb-3">
+              <i class="fas fa-quote-left fa-2x text-primary"></i>
+            </div>
+            <p class="card-text fst-italic" style="color: red;">"La Fundación Alenu cambió la vida de mi hijo. Gracias a su apoyo, hoy tiene acceso a educación y un futuro prometedor."</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Testimonial">
+              <div>
+                <h6 class="mb-0">María Rodríguez</h6>
+                <small class="text-muted">Madre beneficiada</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4 reveal">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="text-center mb-3">
+              <i class="fas fa-quote-left fa-2x text-primary"></i>
+            </div>
+            <p class="card-text fst-italic" style="color: red;">"Como voluntario, he visto el impacto real de la Fundación Alenu. Su trabajo transforma vidas todos los días."</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://randomuser.me/api/portraits/men/54.jpg" class="rounded-circle me-3" width="50" height="50" alt="Testimonial">
+              <div>
+                <h6 class="mb-0">Carlos Martínez</h6>
+                <small class="text-muted">Voluntario</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4 reveal">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="text-center mb-3">
+              <i class="fas fa-quote-left fa-2x text-primary"></i>
+            </div>
+            <p class="card-text fst-italic" style="color: red;">"Nuestra empresa apoya a la Fundación Alenu porque creemos en su misión. Son transparentes y efectivos en su labor."</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="50" height="50" alt="Testimonial">
+              <div>
+                <h6 class="mb-0">Laura Gómez</h6>
+                <small class="text-muted">Empresa aliada</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+ 
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Función para animar elementos al hacer scroll
+    function reveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+    }
+    
+    window.addEventListener('scroll', reveal);
+    
+    // Inicializar elementos visibles al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animación de aparición inicial
+      setTimeout(() => {
+        document.querySelectorAll('.appear').forEach(el => {
+          el.classList.add('appear');
+        });
+      }, 300);
+      
+      // Revelar elementos que ya están en pantalla
+      reveal();
+      
+      // Hacer que las tarjetas sean visibles con efecto de aparición
+      setTimeout(() => {
+        document.querySelectorAll('.card').forEach(card => {
+          card.classList.add('visible');
+        });
+      }, 500);
+    });
+  </script>
+</body>
+</html>
 {% endblock %}
