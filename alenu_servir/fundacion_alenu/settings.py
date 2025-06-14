@@ -86,8 +86,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),                    # si tienes una carpeta estática global
-    os.path.join(BASE_DIR, 'tasks', 'static'),           # estáticos de la app tasks
-    os.path.join(BASE_DIR, 'donations', 'static'),       # estáticos de la app donations
+   
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # usar un nombre diferente de `static/`
